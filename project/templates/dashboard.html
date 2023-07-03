@@ -1,7 +1,84 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="title">
-  Welcome, {{ name }}!
-</h1>
+<h1 class="title">Welcome, {{ name }}!</h1>
+
+
+  <div class="container my-3">
+    <div class="row">
+      <div class="col-lg-4">
+        
+        <form class="input-group" method="POST" action="{{ url_for('main.search') }}">
+            <input type="text" name="search" class="form-control" placeholder="Search" aria-label="Search">
+            <select name="field_options" class="form-select" aria-label="Field Options">
+                <option value="SKU">SKU</option>
+                <option value="Product Name">Product Name</option>
+                <option value="UPC">UPC</option>
+                <!-- Add more field options here -->
+            </select>
+            <button class="btn btn-outline-secondary" type="submit">Search</button>
+          </form>
+        </div> 
+
+      <div class="col-lg-8 d-flex justify-content-end align-items-center">
+        <button class="btn btn-primary mx-1">
+            <a href="{{ url_for('main.add_product') }}" class="text-light">Add Product</a>
+        </button>
+
+        <button class="btn btn-info mx-1">
+            <a href="{{ url_for('main.export_data') }}" class="text-light">Export Products</a>
+        </button>
+
+        <form action="{{ url_for('main.upload_csv') }}" method="post" enctype="multipart/form-data" class="d-inline-block">
+            <input type="file" name="file" id="file" class="d-none">
+            <label for="file" class="btn btn-success mx-1 custom-file-upload">Import Products by CSV</label>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+
+{% if products %}
+<!-- Products table -->
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Parent SKU</th>
+            <th>SKU</th>
+            <th>UPC</th>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Image</th>
+            <!-- and so on for each field -->
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.parent_sku}}</td>
+                <td>{{ product.sku }}</td>
+                <td>{{ product.upc }}</td>
+                <td>{{ product.product_name }}</td>
+                <td>{{ product.quantity }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.image_1 }}</td>
+                <!-- and so on for each field -->
+                <td>
+                    <a href="{{ url_for('main.edit_product', id=product.id) }}" class="btn btn-warning">Edit</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% else %}
+    <h2>No products found.</h2>
+{% endif %}
+
 {% endblock %}

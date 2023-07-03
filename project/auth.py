@@ -33,7 +33,7 @@ def signup():
     return render_template('signup.html')
 
 # Sing up implementation if needed later
-'''
+
 @auth.route('/signup', methods=['POST'])
 def signup_post():
     # code to validate and add user to database goes here
@@ -55,7 +55,7 @@ def signup_post():
     db.session.commit()
 
     return redirect(url_for('auth.login'))
-'''
+
 @auth.route('/logout')
 @login_required
 def logout():

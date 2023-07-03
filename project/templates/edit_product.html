@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Edit Product</h1>
+
+
+
+<form method="POST">
+    <input type="hidden" name="_method" value="POST">
+    <div class="mb-3">
+        <label class="form-label">SKU</label>
+        <input type="text" class="form-control" name="sku" value="{{ product.sku }}" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">UPC</label>
+        <input type="text" class="form-control" name="upc" value="{{ product.upc }}" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Parent SKU</label>
+        <input type="text" class="form-control" name="parent_sku" value="{{ product.parent_sku }}" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Product Name</label>
+        <input type="text" class="form-control" name="product_name" value="{{ product.product_name }}" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Product Description</label>
+        <input type="text" class="form-control" name="product_description" value="{{ product.product_description }}" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Quantity</label>
+        <input type="text" class="form-control" name="quantity" value="{{ product.quantity }}" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Price</label>
+        <input type="text" class="form-control" name="price" value="{{ product.price }}" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Bullet Point 1</label>
+        <input type="text" class="form-control" name="bullet_point_1" value="{{ product.bullet_point_1 }}"> 
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Bullet Point 2</label>
+        <input type="text" class="form-control" name="bullet_point_2" value="{{ product.bullet_point_2 }}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Bullet Point 3</label>
+        <input type="text" class="form-control" name="bullet_point_3" value="{{ product.bullet_point_3 }}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Bullet Point 4</label>
+        <input type="text" class="form-control" name="bullet_point_4" value="{{ product.bullet_point_4 }}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Bullet Point 5</label>
+        <input type="text" class="form-control" name="bullet_point_5" value="{{ product.bullet_point_5 }}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Image 1</label>
+        <input type="text" class="form-control" name="image_1" value="{{ product.image_1 }}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Image 2</label>
+        <input type="text" class="form-control" name="image_2" value="{{ product.image_2 }}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Image 3</label>
+        <input type="text" class="form-control" name="image_3" value="{{ product.image_3 }}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Image 4</label>
+        <input type="text" class="form-control" name="image_4" value="{{ product.image_4 }}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Image 5</label>
+        <input type="text" class="form-control" name="image_5" value="{{ product.image_5 }}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Image 6</label>
+        <input type="text" class="form-control" name="image_6" value="{{ product.image_6 }}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Image 7</label>
+        <input type="text" class="form-control" name="image_7" value="{{ product.image_7 }}">
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <a href="{{ url_for('main.dashboard') }}" class="btn btn-secondary">Cancel</a>
+
+</form>
+
+    <br>
+    <hr>
+    <b>Delete Product. This action cannot be undone.</b>
+    <form action="{{ url_for('main.delete_product', id=product.id) }}" method="post" onsubmit="return confirm('Are you sure you want to delete this product? This action cannot be undone.');">
+        <input type="submit" value="Delete" class="btn btn-danger">
+    </form>
+    <br>
+{% endblock %}
+

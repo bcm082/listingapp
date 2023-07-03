@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Add New Product</h1>
+<form method="POST">
+    <!-- Add form elements for all the product fields here. For example: -->
+    <div class="mb-3">
+        <label class="form-label">SKU</label>
+        <input type="text" class="form-control" name="sku" required>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">UPC</label>
+        <input type="text" class="form-control" name="upc" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Parent SKU</label>
+        <input type="text" class="form-control" name="parent_sku" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Product Name</label>
+        <input type="text" class="form-control" name="product_name" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Product Description</label>
+        <input type="text" class="form-control" name="product_description" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Quantity</label>
+        <input type="text" class="form-control" name="quantity" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Price</label>
+        <input type="text" class="form-control" name="price" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Bullet Point 1</label>
+        <input type="text" class="form-control" name="bullet_point_1" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Bullet Point 2</label>
+        <input type="text" class="form-control" name="bullet_point_2" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Bullet Point 3</label>
+        <input type="text" class="form-control" name="bullet_point_3" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Bullet Point 4</label>
+        <input type="text" class="form-control" name="bullet_point_4" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Bullet Point 5</label>
+        <input type="text" class="form-control" name="bullet_point_5" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Image 1</label>
+        <input type="text" class="form-control" name="image_1" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Image 2</label>
+        <input type="text" class="form-control" name="image_2" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Image 3</label>
+        <input type="text" class="form-control" name="image_3" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Image 4</label>
+        <input type="text" class="form-control" name="image_4" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Image 5</label>
+        <input type="text" class="form-control" name="image_5" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Image 6</label>
+        <input type="text" class="form-control" name="image_6" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Image 7</label>
+        <input type="text" class="form-control" name="image_7" required>
+    </div>
+
+    <!-- Repeat above block for all other fields -->
+
+    <button type="submit" class="btn btn-primary">Add Product</button>
+    <a href="{{ url_for('main.dashboard') }}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}
