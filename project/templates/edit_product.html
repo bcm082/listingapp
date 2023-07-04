@@ -35,6 +35,10 @@
         <label class="form-label">Price</label>
         <input type="text" class="form-control" name="price" value="{{ product.price }}" required>
     </div>
+
+    <br>
+    <hr>
+    <h3>Bullet Points</h3>
     <div class="mb-3">
         <label class="form-label">Bullet Point 1</label>
         <input type="text" class="form-control" name="bullet_point_1" value="{{ product.bullet_point_1 }}"> 
@@ -55,6 +59,9 @@
         <label class="form-label">Bullet Point 5</label>
         <input type="text" class="form-control" name="bullet_point_5" value="{{ product.bullet_point_5 }}">
     </div>
+    <br>
+    <hr>
+    <h3>Images Link</h3>
     <div class="mb-3">
         <label class="form-label">Image 1</label>
         <input type="text" class="form-control" name="image_1" value="{{ product.image_1 }}">
@@ -84,7 +91,7 @@
         <input type="text" class="form-control" name="image_7" value="{{ product.image_7 }}">
     </div>
 
-
+    <hr>
     <button type="submit" class="btn btn-primary">Save Changes</button>
     <a href="{{ url_for('main.dashboard') }}" class="btn btn-secondary">Cancel</a>
 
