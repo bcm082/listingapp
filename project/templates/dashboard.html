@@ -54,7 +54,7 @@
             <th>Price</th>
             <th>Image</th>
             <!-- and so on for each field -->
-            <th>Actions</th>
+            <th>Edit Product</th>
         </tr>
     </thead>
     <tbody>
@@ -67,7 +67,8 @@
                 <td>{{ product.product_name }}</td>
                 <td>{{ product.quantity }}</td>
                 <td>{{ product.price }}</td>
-                <td>{{ product.image_1 }}</td>
+                <td><img src="{{ product.image_1 }}" alt="Image 1" style="width: 50px; height: auto;"></td>
+
                 <!-- and so on for each field -->
                 <td>
                     <a href="{{ url_for('main.edit_product', id=product.id) }}" class="btn btn-warning">Edit</a>
