@@ -41,6 +41,15 @@ def edit_product(id):
         product.image_5 = request.form['image_5']
         product.image_6 = request.form['image_6']
         product.image_7 = request.form['image_7']
+        product.video = request.form['video']
+        product.aplus_1 = request.form['aplus_1']
+        product.aplus_2 = request.form['aplus_2']
+        product.aplus_3 = request.form['aplus_3']
+        product.aplus_4 = request.form['aplus_4']
+        product.aplus_5 = request.form['aplus_5']
+        product.aplus_6 = request.form['aplus_6']
+        product.aplus_7 = request.form['aplus_7']
+        product.brand_name = request.form['brand_name']
         db.session.commit()
         return redirect(url_for('main.dashboard'))
     return render_template('edit_product.html', product=product)
@@ -71,6 +80,17 @@ def add_product():
             image_6=request.form['image_6'],
             image_7=request.form['image_7'],
             upc=request.form['upc'],
+            asin = request.form['asin'],
+            video = request.form['video'],
+            aplus_1 = request.form['aplus_1'],
+            aplus_2 = request.form['aplus_2'],
+            aplus_3 = request.form['aplus_3'],
+            aplus_4 = request.form['aplus_4'],
+            aplus_5 = request.form['aplus_5'],
+            aplus_6 = request.form['aplus_6'],
+            aplus_7 = request.form['aplus_7'],
+            brand_name = request.form['brand_name'],
+
         )
         db.session.add(new_product)
         db.session.commit()
@@ -109,10 +129,10 @@ def export_data():
 
     # Create a CSV writer and write to the string buffer
     writer = csv.writer(proxy)
-    writer.writerow(['ID', 'Parent SKU', 'SKU', 'UPC', 'Product Name', 'Quantity', 'Price', 'Bullet 1', 'Bullet 2', 'Bullet 3', 'Bullet 4', 'Bullet 5', 'Image 1', 'Image 2', 'Image 3', 'Image 4', 'Image 5', 'Image 6', 'Image 7'])  # Add other columns if needed
+    writer.writerow(['ID', 'Parent SKU', 'SKU', 'UPC', 'Brand Name', 'Product Name', 'Quantity', 'Price', 'Bullet 1', 'Bullet 2', 'Bullet 3', 'Bullet 4', 'Bullet 5', 'Image 1', 'Image 2', 'Image 3', 'Image 4', 'Image 5', 'Image 6', 'Image 7', 'A Plus 1', 'A Plus 2','A Plus 3', 'A Plus 4', 'A Plus 5', 'A Plus 6', 'A Plus 7'])  # Add other columns if needed
 
     for product in products:
-        writer.writerow([product.id, product.parent_sku, product.sku, product.upc, product.product_name, product.quantity, product.price, product.bullet_point_1, product.bullet_point_2, product.bullet_point_3, product.bullet_point_4, product.bullet_point_5, product.image_1, product.image_2, product.image_3, product.image_4, product.image_5, product.image_6, product.image_7]) 
+        writer.writerow([product.id, product.parent_sku, product.sku, product.upc, product.brand_name ,product.product_name, product.quantity, product.price, product.bullet_point_1, product.bullet_point_2, product.bullet_point_3, product.bullet_point_4, product.bullet_point_5, product.image_1, product.image_2, product.image_3, product.image_4, product.image_5, product.image_6, product.image_7, product.aplus_1, product.aplus_2, product.aplus_3, product.aplus_4, product.aplus_5, product.aplus_6, product.aplus_7]) 
 
     # Create a byte buffer from the string buffer
     mem = io.BytesIO()
@@ -144,7 +164,7 @@ def upload_csv():
 
     if file:
         df = pd.read_csv(file)
-        columns = ['parent_sku', 'sku', 'upc', 'product_name', 'product_description', 'quantity', 'price', 'bullet_point_1', 'bullet_point_2', 'bullet_point_3', 'bullet_point_4', 'bullet_point_5', 'image_1', 'image_2', 'image_3', 'image_4', 'image_5', 'image_6', 'image_7']
+        columns = ['parent_sku', 'sku', 'upc', 'brand_name','product_name', 'product_description', 'quantity', 'price', 'bullet_point_1', 'bullet_point_2', 'bullet_point_3', 'bullet_point_4', 'bullet_point_5', 'image_1', 'image_2', 'image_3', 'image_4', 'image_5', 'image_6', 'image_7', 'aplus_1', 'aplus_2', 'aplus_3', 'aplus_4', 'aplus_5', 'aplus_6', 'aplus_7']
         
         for column in columns:
             if column not in df.columns:
@@ -157,6 +177,7 @@ def upload_csv():
                 # Update product if it exists
                 product.parent_sku = row['parent_sku']
                 product.upc = row['upc']
+                product.brand_name = row['brand_name']
                 product.product_name = row['product_name']
                 product.product_description = row['product_description']
                 product.quantity = row['quantity']
@@ -173,12 +194,20 @@ def upload_csv():
                 product.image_5 = row['image_5']
                 product.image_6 = row['image_6']
                 product.image_7 = row['image_7']
+                product.aplus_1 = row['aplus_1']
+                product.aplus_2 = row['aplus_2']
+                product.aplus_3 = row['aplus_3']
+                product.aplus_4 = row['aplus_4']
+                product.aplus_5 = row['aplus_5']
+                product.aplus_6 = row['aplus_6']
+                product.aplus_7 = row['aplus_7']
             else:
                 # Create new product if it doesn't exist
                 new_product = Product(
                     parent_sku=row['parent_sku'],
                     sku=row['sku'],
                     upc=row['upc'],
+                    brand_name=row['brand_name'],
                     product_name=row['product_name'],
                     product_description=row['product_description'],
                     quantity=row['quantity'],
@@ -195,6 +224,13 @@ def upload_csv():
                     image_5=row['image_5'],
                     image_6=row['image_6'],
                     image_7=row['image_7'],
+                    aplus_1=row['aplus_1'],
+                    aplus_2=row['aplus_2'],
+                    aplus_3=row['aplus_3'],
+                    aplus_4=row['aplus_4'],
+                    aplus_5=row['aplus_5'],
+                    aplus_6=row['aplus_6'],
+                    aplus_7=row['aplus_7']
                 )
                 db.session.add(new_product)
             
