@@ -61,41 +61,41 @@ def add_product():
     if request.method == 'POST':
         # You'll get these from the form
         new_product = Product(
-            sku=request.form['sku'],
-            parent_sku=request.form['parent_sku'],
-            product_name=request.form['product_name'],
-            product_description=request.form['product_description'],
-            quantity=request.form['quantity'],
-            price=request.form['price'],
-            bullet_point_1=request.form['bullet_point_1'],
-            bullet_point_2=request.form['bullet_point_2'],
-            bullet_point_3=request.form['bullet_point_3'],
-            bullet_point_4=request.form['bullet_point_4'],
-            bullet_point_5=request.form['bullet_point_5'],
-            image_1=request.form['image_1'],
-            image_2=request.form['image_2'],
-            image_3=request.form['image_3'],
-            image_4=request.form['image_4'],
-            image_5=request.form['image_5'],
-            image_6=request.form['image_6'],
-            image_7=request.form['image_7'],
-            upc=request.form['upc'],
-            asin = request.form['asin'],
-            video = request.form['video'],
-            aplus_1 = request.form['aplus_1'],
-            aplus_2 = request.form['aplus_2'],
-            aplus_3 = request.form['aplus_3'],
-            aplus_4 = request.form['aplus_4'],
-            aplus_5 = request.form['aplus_5'],
-            aplus_6 = request.form['aplus_6'],
-            aplus_7 = request.form['aplus_7'],
-            brand_name = request.form['brand_name'],
-
+            sku=request.form.get('sku'),
+            parent_sku=request.form.get('parent_sku'),
+            product_name=request.form.get('product_name'),
+            product_description=request.form.get('product_description'),
+            quantity=request.form.get('quantity'),
+            price=request.form.get('price'),
+            bullet_point_1=request.form.get('bullet_point_1'),
+            bullet_point_2=request.form.get('bullet_point_2'),
+            bullet_point_3=request.form.get('bullet_point_3'),
+            bullet_point_4=request.form.get('bullet_point_4'),
+            bullet_point_5=request.form.get('bullet_point_5'),
+            image_1=request.form.get('image_1'),
+            image_2=request.form.get('image_2'),
+            image_3=request.form.get('image_3'),
+            image_4=request.form.get('image_4'),
+            image_5=request.form.get('image_5'),
+            image_6=request.form.get('image_6'),
+            image_7=request.form.get('image_7'),
+            upc=request.form.get('upc'),
+            asin = request.form.get('asin'),
+            video = request.form.get('video'),
+            aplus_1 = request.form.get('aplus_1'),
+            aplus_2 = request.form.get('aplus_2'),
+            aplus_3 = request.form.get('aplus_3'),
+            aplus_4 = request.form.get('aplus_4'),
+            aplus_5 = request.form.get('aplus_5'),
+            aplus_6 = request.form.get('aplus_6'),
+            aplus_7 = request.form.get('aplus_7'),
+            brand_name = request.form.get('brand_name'),
         )
         db.session.add(new_product)
         db.session.commit()
         return redirect(url_for('main.dashboard'))
     return render_template('add_product.html')
+
 
 @main.route('/search', methods=['POST'])
 def search():
