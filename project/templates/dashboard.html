@@ -55,6 +55,7 @@
             <th>Image</th>
             <!-- and so on for each field -->
             <th>Edit Product</th>
+            <th>List on Walmart</th>
         </tr>
     </thead>
     <tbody>
@@ -72,6 +73,9 @@
                 <!-- and so on for each field -->
                 <td>
                     <a href="{{ url_for('main.edit_product', id=product.id) }}" class="btn btn-warning">Edit</a>
+                </td>
+                <td>
+                    <button class="btn btn-primary list-on-walmart" data-id="{{ product.id }}">List</button>
                 </td>
             </tr>
         {% endfor %}
