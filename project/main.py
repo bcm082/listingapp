@@ -3,6 +3,8 @@ from flask_login import login_required, current_user
 from . import db
 from .models import Product
 from flask import request, redirect, url_for, flash
+from flask_sqlalchemy import SQLAlchemy
+import requests
 
 main = Blueprint('main', __name__)
 
@@ -254,3 +256,31 @@ def delete_product(id):
     db.session.commit()
     flash('Product has been deleted!')
     return redirect(url_for('main.dashboard'))
+
+# Walmart API
+@main.route('/list_on_walmart/<product_id>', methods=['POST'])
+def list_on_walmart(product_id):
+    product = Product.query.get_or_404(product_id)
+
+    walmart_api_url = "https://marketplace.walmartapis.com/v3/items"
+
+    headers = {
+        'Content-Type': 'application/xml',
+        'Authorization': 'Basic YourWalmartApiAccessKey',
+        'WM_SVC.NAME': 'Walmart Marketplace',
+        'WM_QOS.CORRELATION_ID': '123456abcdef',
+        'WM_SEC.ACCESS_TOKEN': 'YourWalmartApiAccessToken',
+    }
+
+    product_data = {
+        'sku': product.sku,
+        'upc': product.upc,
+        # Include other necessary product fields here...
+    }
+
+    response = requests.post(walmart_api_url, headers=headers, data=product_data)
+
+    if response.status_code == 200:
+        return {"status": "success", "message": "Product listed on Walmart successfully!"}
+    else:
+        return {"status": "error", "message": "Failed to list product on Walmart."}
