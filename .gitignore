@@ -1,0 +1,53 @@
+# System-generated files
+.DS_Store           # macOS
+Thumbs.db           # Windows
+*.log               # Log files
+*.bak               # Backup files
+*.swp               # Swap files
+
+# Python bytecode
+*.pyc
+*.pyo
+__pycache__/
+
+# IDE and Editor-specific files
+.idea/              # PyCharm/IntelliJ
+.vscode/            # Visual Studio Code
+*.iml               # IntelliJ IDEA module files
+*.sublime-project   # Sublime Text project files
+*.sublime-workspace
+
+
+# Virtual Environment
+backend/venv/
+
+# Flask Environment Variables
+backend/.env
+
+# Flask Cache and Temporary Files
+backend/*.sqlite3
+backend/instance/
+backend/.pytest_cache/
+backend/migrations/
+
+# Flask Deployment Files
+backend/.coverage       # Coverage reports
+backend/coverage.xml
+backend/htmlcov/
+
+# Pytest temporary files
+backend/.pytest_cache/
+backend/.pytest_cache/
+
+# Node.js Dependencies
+frontend/node_modules/
+
+# Build Output (Production-ready React App)
+frontend/build/
+
+# Environment Variables
+frontend/.env
+
+# Yarn or NPM Logs
+yarn-error.log
+npm-debug.log
