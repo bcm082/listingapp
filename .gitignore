@@ -17,7 +17,6 @@ __pycache__/
 *.sublime-project   # Sublime Text project files
 *.sublime-workspace
 
-
 # Virtual Environment
 backend/venv/
 
@@ -51,3 +50,9 @@ frontend/.env
 # Yarn or NPM Logs
 yarn-error.log
 npm-debug.log
+
+# Tailwind CSS
+tailwind.css
+
+# PostCSS Cache
+.pnpm-store/
