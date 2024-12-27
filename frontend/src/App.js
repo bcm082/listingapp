@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './Login';
 import Signup from './Signup';
+import HeroSection from './components/HeroSection';
 import './App.css';
 
 function App() {
@@ -13,10 +14,9 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/" element={
-              <div>
-                <h1 className="text-3xl font-bold">Welcome to the Listing App</h1>
-                <p className="mt-4">Please <a href="/login" className="text-blue-500 hover:underline">Login</a> or <a href="/signup" className="text-blue-500 hover:underline">Sign Up</a>.</p>
-              </div>
+              <main>
+                <HeroSection />
+              </main>
             } />
           </Routes>
         </header>
