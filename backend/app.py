@@ -21,11 +21,6 @@ def is_logged_in():
 def index():
     return render_template('index.html')
 
-@app.route('/dashboard')
-def dashboard():
-    if not is_logged_in():
-        return redirect(url_for('login'))
-    return render_template('dashboard.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -94,6 +89,30 @@ def register():
 def logout():
     session.pop('logged_in', None)
     return redirect(url_for('index'))  # Redirect to index after logout
+
+@app.route('/dashboard')
+def dashboard():
+    if not is_logged_in():
+        return redirect(url_for('login'))
+    return render_template('dashboard.html')
+
+@app.route('/settings')
+def settings():
+    if not is_logged_in():
+        return redirect(url_for('login'))
+    return render_template('settings.html')
+
+@app.route('/generate-images')
+def generate_images():
+    if not is_logged_in():
+        return redirect(url_for('login'))
+    return render_template('generate_images.html')
+
+@app.route('/create-listing')
+def create_listing():
+    if not is_logged_in():
+        return redirect(url_for('login'))
+    return render_template('create_listing.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
