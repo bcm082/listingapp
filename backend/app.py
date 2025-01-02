@@ -65,5 +65,10 @@ def register():
         return redirect(url_for('dashboard'))  # Redirect to dashboard after registration
     return render_template('register.html')
 
+@app.route('/logout')
+def logout():
+    session.pop('logged_in', None)
+    return redirect(url_for('index'))  # Redirect to index after logout
+
 if __name__ == '__main__':
     app.run(debug=True)
