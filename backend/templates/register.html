@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<div class="container px-5 my-5">
+    <div class="text-center mb-5">
+        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-person-plus"></i></div>
+        <h2 class="fw-bolder">Create Account</h2>
+        <p class="lead mb-0">Join us today!</p>
+    </div>
+    <div class="row gx-5 justify-content-center">
+        <div class="col-lg-6">
+            <form id="registerForm" action="/register" method="post">
+                <div class="form-floating mb-3">
+                    <input class="form-control" id="accountName" name="accountName" type="text" placeholder="Enter your account name..." required />
+                    <label for="accountName">Account Name</label>
+                    <div class="invalid-feedback">An account name is required.</div>
+                </div>
+                <div class="form-floating mb-3">
+                    <input class="form-control" id="email" name="email" type="email" placeholder="name@example.com" required />
+                    <label for="email">Email address</label>
+                    <div class="invalid-feedback">A valid email is required.</div>
+                </div>
+                <div class="form-floating mb-3">
+                    <input class="form-control" id="password" name="password" type="password" placeholder="Enter your password..." required />
+                    <label for="password">Password</label>
+                    <div class="invalid-feedback">A password is required.</div>
+                </div>
+                <div class="form-floating mb-3">
+                    <input class="form-control" id="confirmPassword" name="confirmPassword" type="password" placeholder="Confirm your password..." required />
+                    <label for="confirmPassword">Confirm Password</label>
+                    <div class="invalid-feedback">Please confirm your password.</div>
+                </div>
+                <div class="d-grid"><button class="btn btn-primary btn-lg" type="submit">Register</button></div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
