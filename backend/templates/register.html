@@ -9,6 +9,11 @@
         <h2 class="fw-bolder">Create Account</h2>
         <p class="lead mb-0">Join us today!</p>
     </div>
+    {% if error %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endif %}
     <div class="row gx-5 justify-content-center">
         <div class="col-lg-6">
             <form id="registerForm" action="/register" method="post">
