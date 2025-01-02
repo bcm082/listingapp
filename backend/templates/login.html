@@ -9,6 +9,11 @@
         <h2 class="fw-bolder">Login</h2>
         <p class="lead mb-0">Please enter your credentials</p>
     </div>
+    {% if error %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endif %}
     <div class="row gx-5 justify-content-center">
         <div class="col-lg-6">
             <form id="loginForm" action="/login" method="post">
@@ -18,9 +23,9 @@
                     <div class="invalid-feedback">An account name is required.</div>
                 </div>
                 <div class="form-floating mb-3">
-                    <input class="form-control" id="username" name="username" type="text" placeholder="Enter your username..." required />
-                    <label for="username">Username</label>
-                    <div class="invalid-feedback">A username is required.</div>
+                    <input class="form-control" id="email" name="email" type="text" placeholder="Enter your email..." required />
+                    <label for="email">EMail Address</label>
+                    <div class="invalid-feedback">An e-mail is required.</div>
                 </div>
                 <div class="form-floating mb-3">
                     <input class="form-control" id="password" name="password" type="password" placeholder="Enter your password..." required />
