@@ -50,6 +50,7 @@ def register():
         email = request.form['email']
         password = request.form['password']
         confirm_password = request.form['confirmPassword']
+        plan = request.form['plan']
 
         # Check if passwords match
         if password != confirm_password:
@@ -65,8 +66,8 @@ def register():
         if account_response.data:
             return render_template('register.html', error="Account name already exists.")
 
-        # Create new account
-        new_account_response = supabase.table('accounts').insert({'account_name': account_name}).execute()
+        # Create new account with selected plan
+        new_account_response = supabase.table('accounts').insert({'account_name': account_name, 'plan': plan}).execute()
         if not new_account_response.data:
             return render_template('register.html', error="Failed to create account.")
 

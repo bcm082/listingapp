@@ -67,6 +67,10 @@
                         <ul class="list-unstyled mb-4">
                             <li class="mb-2">
                                 <i class="bi bi-check text-primary"></i>
+                                Create up to 10 listings per month with full access to the platform.
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-check text-primary"></i>
                                 Access to basic AI tools for product listing.
                             </li>
                             <li class="mb-2">
@@ -82,7 +86,7 @@
                                 Limited customer support.
                             </li>
                         </ul>
-                        <div class="d-grid"><a class="btn btn-outline-primary" href="#!">Choose plan</a></div>
+                        <div class="d-grid"><a class="btn btn-outline-primary" href="{{ url_for('register') }}?plan=free">Choose plan</a></div>
                     </div>
                 </div>
             </div>
@@ -100,6 +104,10 @@
                         <ul class="list-unstyled mb-4">
                             <li class="mb-2">
                                 <i class="bi bi-check text-primary"></i>
+                                Unlimited Listings.
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-check text-primary"></i>
                                 Advanced AI tools for enhanced product descriptions and keyword optimization.
                             </li>
                             <li class="mb-2">
@@ -115,37 +123,7 @@
                                 Priority customer support and analytics dashboard.
                             </li>
                         </ul>
-                        <div class="d-grid"><a class="btn btn-primary" href="#!">Choose plan</a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-xl-4">
-                <div class="card">
-                    <div class="card-body p-5">
-                        <div class="small text-uppercase fw-bold text-muted">Enterprise</div>
-                        <div class="mb-3">
-                            <span class="display-4 fw-bold">$29</span>
-                            <span class="text-muted">/ mo.</span>
-                        </div>
-                        <ul class="list-unstyled mb-4">
-                            <li class="mb-2">
-                                <i class="bi bi-check text-primary"></i>
-                                Full suite of AI tools for comprehensive product management.
-                            </li>
-                            <li class="mb-2">
-                                <i class="bi bi-check text-primary"></i>
-                                Unlimited marketplace connections.
-                            </li>
-                            <li class="mb-2">
-                                <i class="bi bi-check text-primary"></i>
-                                Custom image generation and branding options.
-                            </li>
-                            <li class="mb-2">
-                                <i class="bi bi-check text-primary"></i>
-                                Dedicated account manager and 24/7 support.
-                            </li>
-                        </ul>
-                        <div class="d-grid"><a class="btn btn-primary" href="#!">Choose plan</a></div>
+                        <div class="d-grid"><a class="btn btn-primary" href="{{ url_for('register') }}?plan=pro">Choose plan</a></div>
                     </div>
                 </div>
             </div>
