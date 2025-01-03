@@ -5,7 +5,34 @@
 {% block content %}
 <div class="container px-5 my-5">
     <div class="text-center mb-5">
-        <h2 class="fw-bolder">Settings</h2>
+        <h2 class="fw-bolder">Marketplaces and Websites Connectors</h2>
+        <p class="lead">Authorize connections to these marketplaces to streamline your product listing process. By connecting, you can manage your listings more efficiently across platforms.</p>
     </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Marketplace</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><img src="{{ url_for('static', filename='assets/amazon.png') }}" alt="Amazon Logo" style="width: 30px; height: auto; margin-right: 10px;">Amazon</td>
+                <td><button class="btn btn-primary">Connect</button></td>
+            </tr>
+            <tr>
+                <td><img src="{{ url_for('static', filename='assets/walmart.png') }}" alt="Walmart Logo" style="width: 30px; height: auto; margin-right: 10px;">Walmart</td>
+                <td><button class="btn btn-primary">Connect</button></td>
+            </tr>
+            <tr>
+                <td><img src="{{ url_for('static', filename='assets/shopify.png') }}" alt="Shopify Logo" style="width: 30px; height: auto; margin-right: 10px;">Shopify</td>
+                <td><button class="btn btn-primary">Connect</button></td>
+            </tr>
+            <tr>
+                <td><img src="{{ url_for('static', filename='assets/ebay.png') }}" alt="Ebay Logo" style="width: 30px; height: auto; margin-right: 10px;">Ebay</td>
+                <td><button class="btn btn-primary">Connect</button></td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 {% endblock %}
