@@ -37,6 +37,13 @@
                     <label for="confirmPassword">Confirm Password</label>
                     <div class="invalid-feedback">Please confirm your password.</div>
                 </div>
+                <div class="form-floating mb-3">
+                    <select class="form-select" id="plan" name="plan" required>
+                        <option value="free" {% if request.args.get('plan') == 'free' %}selected{% endif %}>Free Plan</option>
+                        <option value="pro" {% if request.args.get('plan') == 'pro' %}selected{% endif %}>Pro Plan</option>
+                    </select>
+                    <label for="plan">Select Plan</label>
+                </div>
                 <div class="d-grid"><button class="btn btn-primary btn-lg" type="submit">Register</button></div>
             </form>
         </div>
