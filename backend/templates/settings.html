@@ -18,7 +18,7 @@
         <tbody>
             <tr>
                 <td><img src="{{ url_for('static', filename='assets/amazon.png') }}" alt="Amazon Logo" style="width: 30px; height: auto; margin-right: 10px;">Amazon</td>
-                <td><button class="btn btn-primary">Auhthorize</button></td>
+                <td><a href="https://sandbox.sellingpartnerapi-na.amazon.com/authorization?client_id=YOUR_CLIENT_ID&redirect_uri={{ url_for('amazon_callback', _external=True) }}&response_type=code" class="btn btn-primary">Authorize</a></td>
             </tr>
             <tr>
                 <td><img src="{{ url_for('static', filename='assets/walmart.png') }}" alt="Walmart Logo" style="width: 30px; height: auto; margin-right: 10px;">Walmart</td>

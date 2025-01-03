@@ -114,5 +114,25 @@ def create_listing():
         return redirect(url_for('login'))
     return render_template('create_listing.html')
 
+@app.route('/callback/amazon')
+def amazon_callback():
+    # This is where you will handle the OAuth response from Amazon
+    # You will need to extract the authorization code from the request
+    # and exchange it for an access token.
+    code = request.args.get('code')
+    if not code:
+        return "Error: No code returned", 400
+
+    # Exchange the authorization code for an access token
+    # This will require sending a request to Amazon's token endpoint
+    # You will need to include your client ID, client secret, and the code
+    # received in this callback.
+
+    # For now, just log the code
+    print(f"Authorization code received: {code}")
+
+    # Redirect the user back to the settings page or show a success message
+    return redirect(url_for('settings'))
+
 if __name__ == '__main__':
     app.run(debug=True)
