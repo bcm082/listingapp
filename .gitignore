@@ -18,10 +18,10 @@ __pycache__/
 *.sublime-workspace
 
 # Virtual Environment
-backend/venv/
+listingapp_ENV/
 
 # Flask Environment Variables
-backend/.env
+.env
 
 # Flask Cache and Temporary Files
 backend/*.sqlite3
