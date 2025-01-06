@@ -19,7 +19,7 @@ def is_logged_in():
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('coming_soon.html')
 
 
 @app.route('/login', methods=['GET', 'POST'])
