@@ -33,7 +33,7 @@ def login():
         if account_response.data:
             account_id = account_response.data[0]['id']
             # Query the users table with the account ID, email, and password
-            user_response = supabase.table('users').select('*').eq('id', account_id).eq('email', email).execute()
+            user_response = supabase.table('users').select('*').eq('accounts_id', account_id).eq('email', email).execute()
             if user_response.data:
                 hashed_password = user_response.data[0]['password'].encode('utf-8')
                 if bcrypt.checkpw(password.encode('utf-8'), hashed_password):
