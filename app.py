@@ -38,6 +38,7 @@ def login():
                 hashed_password = user_response.data[0]['password'].encode('utf-8')
                 if bcrypt.checkpw(password.encode('utf-8'), hashed_password):
                     session['logged_in'] = True
+                    session['account_id'] = user_response.data[0]['id']
                     return redirect(url_for('dashboard'))  # Redirect to dashboard after successful login
         # Handle login failure
         return render_template('login.html', error="Invalid account name, email, or password. Please try again.")
@@ -56,32 +57,31 @@ def register():
         if password != confirm_password:
             return render_template('register.html', error="Passwords do not match.")
 
+        # Perform a case-insensitive check for existing account name
+        account_response = supabase.table('accounts').select('id').ilike('account_name', account_name).execute()
+        if account_response.data:
+            return render_template('register.html', error="Account name already exists. Please choose a different name.")
+
         # Check if email already exists
         email_response = supabase.table('users').select('id').eq('email', email).execute()
         if email_response.data:
             return render_template('register.html', error="Email already exists.")
 
-        # Check if account name already exists
-        account_response = supabase.table('accounts').select('id').eq('account_name', account_name).execute()
-        if account_response.data:
-            return render_template('register.html', error="Account name already exists.")
-
         # Create new account with selected plan
         new_account_response = supabase.table('accounts').insert({'account_name': account_name, 'plan': plan}).execute()
         if not new_account_response.data:
             return render_template('register.html', error="Failed to create account.")
-
         account_id = new_account_response.data[0]['id']
 
         # Hash the password
         hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
-
-        # Create new user
-        new_user_response = supabase.table('users').insert({'id': account_id, 'email': email, 'password': hashed_password.decode('utf-8')}).execute()
-        if not new_user_response.data:
+        # Create new user with account_id
+        user_response = supabase.table('users').insert({'email': email, 'password': hashed_password.decode('utf-8'), 'accounts_id': account_id}).execute()
+        if not user_response.data:
             return render_template('register.html', error="Failed to create user.")
 
         session['logged_in'] = True
+        session['account_id'] = account_id
         return redirect(url_for('dashboard'))
 
     return render_template('register.html')
@@ -89,6 +89,7 @@ def register():
 @app.route('/logout')
 def logout():
     session.pop('logged_in', None)
+    session.pop('account_id', None)
     return redirect(url_for('index'))  # Redirect to index after logout
 
 @app.route('/dashboard')
